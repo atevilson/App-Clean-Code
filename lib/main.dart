@@ -19,17 +19,17 @@ class AppUsers extends StatelessWidget {
   const AppUsers({super.key, required this.httpClient});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Cadastro de usuários",
-      home: BlocProvider(
-        create: (_) => UserBloc(httpClient: httpClient),
-        child: const UserListPage(),
+    Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (BuildContext context) => UserBloc(httpClient: httpClient),
+      child: MaterialApp(
+        title: "Cadastro de usuários",
+        home: UserCreatePage(),
+        routes: {
+          '/create': (context) => UserCreatePage(),
+          '/list': (context) => const UserListPage(),
+        },
       ),
-      routes: {
-        '/create': (_) => UserCreatePage(),
-        'list': (_) => const UserListPage()
-      },
     );
   }
 }
