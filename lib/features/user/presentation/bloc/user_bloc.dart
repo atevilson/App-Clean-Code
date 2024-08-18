@@ -18,44 +18,44 @@ import 'package:http/http.dart' as http;
 class UserBloc extends Bloc<UserEvent, UserState> {
   final http.Client httpClient;
 
-  UserBloc({required this.httpClient}) : super(UserInitial());
-
-  Stream<UserState> mapEventToState(UserEvent event) async* {
-    if (event is UserCreateReq) {
-      yield UserLoading();
+  UserBloc({required this.httpClient}) : super(UserInitial()) {
+    on<UserCreateReq>((event, emit) async {
+      emit(UserLoading());
       try {
         final response = await httpClient.post(
-          Uri.parse('http://localhost:5000/api/usuarios'),
+          Uri.parse('http://192.168.201.6:5000/api/users'),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({'name': event.name, 'email': event.email}),
         );
 
         if (response.statusCode == 200) {
           final user = jsonDecode(response.body);
-          yield UserCreated(user: User.fromJson(user));
+          emit(UserCreated(user: User.fromJson(user)));
         } else {
-          yield UserErro(message: "Falha ao criar usuário");
+          emit(UserErro(message: "Falha ao criar usuário"));
         }
       } catch (e) {
-        yield UserErro(message: e.toString());
+        emit(UserErro(message: e.toString()));
       }
-    }
-    if (event is UserListRequested) {
-      yield UserLoading();
+    });
+
+    on<UserListRequested>((event, emit) async {
+      emit(UserLoading());
       try {
-        final response = await httpClient.get(Uri.parse('http://localhost:5000/api/usuarios'),
+        final response = await httpClient.get(Uri.parse('http://192.168.201.6:5000/api/users'),
         );
         if (response.statusCode == 200) {
           final List<dynamic> usersJson = jsonDecode(response.body);
           final users = usersJson.map((json) => User.fromJson(json)).toList();
-          yield UserLoaded(users: users);
+          emit(UserLoaded(users: users));
         } else {
-          yield UserErro(message: "Falha ao carregar usuários");
+          emit(UserErro(message: "Falha ao carregar usuários"));
         }
       }
       catch (e) {
-        yield UserErro(message: e.toString());
-      }
-    }
+          emit(UserErro(message: e.toString()));
+        }
+      },
+    );
   }
 }
