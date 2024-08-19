@@ -1,6 +1,7 @@
 
 
 import 'package:clean_code_app/features/user/presentation/bloc/user_bloc.dart';
+import 'package:clean_code_app/features/user/presentation/pages/home_page.dart';
 import 'package:clean_code_app/features/user/presentation/pages/user_create_page.dart';
 import 'package:clean_code_app/features/user/presentation/pages/user_list_page.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class AppUsers extends StatelessWidget {
       create: (BuildContext context) => UserBloc(httpClient: httpClient),
       child: MaterialApp(
         title: "Cadastro de usuários",
-        home: UserCreatePage(),
+        home: const HomePage(),
         routes: {
           '/create': (context) => UserCreatePage(),
           '/list': (context) => const UserListPage(),
