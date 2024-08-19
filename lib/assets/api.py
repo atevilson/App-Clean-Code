@@ -11,7 +11,7 @@ def user_registration():
     data = request.get_json()
 
     if not data or 'name' not in data or 'email' not in data:
-        return jsonify({'error': 'invalid data'}), 400
+        return jsonify({'error: invalid data'}), 400
     
     new_user = {
         'id': len(users) + 1,
@@ -25,7 +25,7 @@ def user_registration():
     
 @app.route('/api/users', methods=['GET'])
 def list_users():
-    return jsonify(users), 201
+    return jsonify(users), 200
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
