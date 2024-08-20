@@ -62,11 +62,9 @@ class UserCreatePage extends StatelessWidget {
               onPressed: () {
                 final name = _nameController.text;
                 final email = _emailController.text;
-                if (name.isNotEmpty && email.isNotEmpty) {
-                  BlocProvider.of<UserBloc>(context).add(
+                BlocProvider.of<UserBloc>(context).add(
                   UserCreateReq(name: name, email: email),
                 );
-                }
               },
               child: const Text("Add"),
             ),
