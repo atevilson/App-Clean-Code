@@ -1,16 +1,52 @@
-# clean_code_app
+<h1 align="center"> Flutter App Clean code  </h1>
 
-A new Flutter project.
+![Flutter](https://img.shields.io/badge/Flutter-v3.24-blue)
 
-## Getting Started
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-This project is a starting point for a Flutter application.
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Esse é uma aplicação Flutter desenvolvido com práticas de desenvolvimento `Clean Code`. 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+# :hammer: Funcionalidades do projeto
+
+- `Func. 1`: Cadastro de contatos
+- `Func. 2`: Consulta de contatos
+
+
+# 📁 Acesso ao projeto
+
+
+- Clone o repositório para o seu ambiente local:
+
+   ```bash
+   git clone https://github.com/atevilson/app-clean-code.git
+   ```
+
+
+# 🛠️ Rodar o projeto
+
+1 - No caminho `app-clean-code/lib/assets` execute a API em python `python3 api.py`
+2 - Essa API possui duas rotas, uma para cadastrar contatos passando `nome` e `email`
+3 - Os dados da API python são salvos `localmente` 
+3.1 - É necessário instalar as dependências da API:
+
+- Flask: use `pip install Flask`.
+- jsonify e json: use `pip install jsonify json`.
+- Requests: use `pip install requests`.
+- Response: use `pip install Response`.
+- OrderedDict: use `pip install OrderedDict`.
+
+---
+
+3. Após isso, navegue até o diretório `cd app-clean-code`
+
+3. Execute no terminal `flutter run`
+
+
+### Autor
+---
+
+ <sub><b>Atevilson Freitas</b></sub></a> <a href="">🧑‍💻</a>
