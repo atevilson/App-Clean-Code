@@ -37,12 +37,12 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: <Widget> [
                     MenuItem("Lista de contatos", 
-                    Icons.note_add, 
+                    Icons.contact_page, 
                       onClick: () => _userListPage(context),
                     ),
                     MenuItem(
                     'Novo contato',
-                    Icons.list_alt_outlined,
+                    Icons.contact_mail,
                     onClick: () => _userCreatePage(context),
                   ),
                   ],
