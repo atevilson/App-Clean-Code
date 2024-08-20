@@ -1,6 +1,7 @@
 
-import 'package:clean_code_app/features/user/presentation/pages/user_create_page.dart';
-import 'package:clean_code_app/features/user/presentation/pages/user_list_page.dart';
+import 'package:clean_code_app/src/app/widgets/item_menu.dart';
+import 'package:clean_code_app/src/features/user/presentation/pages/user_create_page.dart';
+import 'package:clean_code_app/src/features/user/presentation/pages/user_list_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -74,60 +75,3 @@ void _userCreatePage(BuildContext context) {
   }
 }
 
-class MenuItem extends StatelessWidget {
-  final String name;
-  final IconData icon;
-  final Function onClick;
-
-  const MenuItem(
-    this.name,
-    this.icon, {super.key, 
-    required this.onClick,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Material(
-        child: InkWell(
-          onTap: () => onClick(),
-          child: Container(
-            decoration: const BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  spreadRadius: 5,
-                  blurRadius: 4,
-                  offset: Offset(0,5),
-                  blurStyle: BlurStyle.outer
-                )
-              ]
-            ),
-            padding: const EdgeInsets.all(8.0),
-            width: 150,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  name,
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Icon(
-                  icon,
-                  color: Colors.black54,
-                  size: 28.0,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}

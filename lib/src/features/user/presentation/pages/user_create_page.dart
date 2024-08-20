@@ -1,8 +1,8 @@
-import 'package:clean_code_app/features/user/presentation/bloc/event/user_create_req.dart';
-import 'package:clean_code_app/features/user/presentation/bloc/state/user_created.dart';
-import 'package:clean_code_app/features/user/presentation/bloc/state/user_erro.dart';
-import 'package:clean_code_app/features/user/presentation/bloc/state/user_state.dart';
-import 'package:clean_code_app/features/user/presentation/bloc/user_bloc.dart';
+import 'package:clean_code_app/src/features/user/presentation/bloc/event/user_create_req.dart';
+import 'package:clean_code_app/src/features/user/presentation/bloc/state/user_created.dart';
+import 'package:clean_code_app/src/features/user/presentation/bloc/state/user_erro.dart';
+import 'package:clean_code_app/src/features/user/presentation/bloc/state/user_state.dart';
+import 'package:clean_code_app/src/features/user/presentation/bloc/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,10 +17,11 @@ class UserCreatePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text("Cadastrar usuários",
-        style: TextStyle(
-          fontSize: 22.0,
-          fontWeight: FontWeight.bold,
+        title: const Text(
+          "Cadastrar usuários",
+          style: TextStyle(
+            fontSize: 22.0,
+            fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),

@@ -1,5 +1,4 @@
-
-import 'package:clean_code_app/features/user/presentation/bloc/event/user_event.dart';
+import 'package:clean_code_app/src/features/user/presentation/bloc/event/user_event.dart';
 
 class UserCreateReq extends UserEvent {
   final String name;
