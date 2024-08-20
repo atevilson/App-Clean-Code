@@ -28,10 +28,10 @@ Esse é uma aplicação Flutter desenvolvido com práticas de desenvolvimento `C
 
 # 🛠️ Rodar o projeto
 
-1 - No caminho `app-clean-code/lib/assets` execute a API em python `python3 api.py`
-2 - Essa API possui duas rotas, uma para cadastrar contatos passando `nome` e `email`
-3 - Os dados da API python são salvos `localmente` 
-3.1 - É necessário instalar as dependências da API:
+1. No caminho `app-clean-code/lib/assets` execute a API em python `python3 api.py`
+Essa API possui duas rotas, uma para cadastrar contatos passando `nome` e `email`
+Os dados da API python são salvos `localmente` 
+É necessário instalar as dependências da API:
 
 - Flask: use `pip install Flask`.
 - jsonify e json: use `pip install jsonify json`.
@@ -41,7 +41,7 @@ Esse é uma aplicação Flutter desenvolvido com práticas de desenvolvimento `C
 
 ---
 
-3. Após isso, navegue até o diretório `cd app-clean-code`
+2. Após isso, navegue até o diretório `cd app-clean-code`
 
 3. Execute no terminal `flutter run`
 
