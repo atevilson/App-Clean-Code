@@ -1,7 +1,5 @@
 import 'package:clean_code_app/src/features/user/presentation/bloc/user_bloc.dart';
 import 'package:clean_code_app/src/features/user/presentation/pages/home_page.dart';
-import 'package:clean_code_app/src/features/user/presentation/pages/user_create_page.dart';
-import 'package:clean_code_app/src/features/user/presentation/pages/user_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -22,12 +20,28 @@ class AppUsers extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => UserBloc(httpClient: httpClient),
       child: MaterialApp(
-        title: "Cadastro de usuários",
+        title: "Cadastro de contatos",
         home: const HomePage(),
-        routes: {
-          '/create': (context) => UserCreatePage(),
-          '/list': (context) => const UserListPage(),
-        },
+        theme: ThemeData(
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: Colors.black,
+            foregroundColor: Colors.white
+          ),
+          elevatedButtonTheme:  const ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(Colors.black),
+              foregroundColor: WidgetStatePropertyAll(Colors.white)
+            )
+          ),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.black,
+            foregroundColor: Colors.white,
+            titleTextStyle: TextStyle(
+              fontSize: 24.0,
+            )
+          ),
+          useMaterial3: true
+        ),
       ),
     );
   }
