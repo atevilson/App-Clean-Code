@@ -16,14 +16,8 @@ class UserCreatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
         title: const Text(
           "Cadastrar usuários",
-          style: TextStyle(
-            fontSize: 22.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
         ),
       ),
       body: BlocListener<UserBloc, UserState>(

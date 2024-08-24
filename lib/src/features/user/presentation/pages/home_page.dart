@@ -11,7 +11,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black87,
         title:  const Text("Agenda de contatos",
           style: TextStyle(
             color: Colors.white,
@@ -37,12 +36,13 @@ class HomePage extends StatelessWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget> [
-                    MenuItem("Lista de contatos", 
+                    MenuItem(
+                      "Lista de contatos", 
                     Icons.contact_page, 
                       onClick: () => _userListPage(context),
                     ),
                     MenuItem(
-                    'Novo contato',
+                      "Novo contato",
                     Icons.contact_mail,
                     onClick: () => _userCreatePage(context),
                   ),
