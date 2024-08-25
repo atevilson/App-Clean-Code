@@ -14,14 +14,16 @@ def user_registration():
 
     name = data.get('name')
     email = data.get('email')
+    phone = data.get('phone')
 
-    if not name or not email or not name.strip() or not email.strip:
-        return jsonify({'erro': 'O campo nome e email não pode ser vazio.'}), 400
+    if not name or not email or not phone or not name.strip() or not email.strip or not phone.strip:
+        return jsonify({'erro': 'Os campos nome, email e phone não podem ser vazios.'}), 400
 
     new_user = {
         'id': len(users) + 1,
         'name': name,
-        'email': email
+        'email': email,
+        'phone': phone
     }
 
     users.append(new_user)
@@ -33,7 +35,7 @@ def list_users():
 
     order_data = [
         
-        OrderedDict({'id': user['id'], 'name': user['name'], 'email': user['email']})
+        OrderedDict({'id': user['id'], 'name': user['name'], 'email': user['email'], 'phone': user['phone']})
         for user in users
     ]
 
