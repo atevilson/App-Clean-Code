@@ -14,7 +14,7 @@ class UserListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Consultar usuários"),
+        title: const Text("Consultar contatos"),
       ),
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
@@ -37,10 +37,8 @@ class UserListPage extends StatelessWidget {
             return Center(
               child: Text(state.message),
             );
-          }
-          return const Center(
-            child: Text("Usuários não cadastrados"),
-          );
+        }
+          return const SizedBox.shrink();
         },
       ),
       floatingActionButton: FloatingActionButton(
