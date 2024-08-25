@@ -1,3 +1,5 @@
+import 'package:clean_code_app/src/features/user/domain/usecases/create_user_usecase.dart';
+import 'package:clean_code_app/src/features/user/domain/usecases/list_user_usecase.dart';
 import 'package:clean_code_app/src/features/user/presentation/bloc/user_bloc.dart';
 import 'package:clean_code_app/src/features/user/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +20,7 @@ class AppUsers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => UserBloc(httpClient: httpClient),
+      create: (BuildContext context) => UserBloc(createUserUsecase: CreateUserUsecase(httpClient), listUserUsecase: ListUserUsecase(httpClient)),
       child: MaterialApp(
         title: "Cadastro de contatos",
         home: const HomePage(),
