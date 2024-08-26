@@ -11,13 +11,14 @@ class UserCreatePage extends StatelessWidget {
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Cadastrar usuários",
+          "Adicionar contato",
         ),
       ),
       body: BlocListener<UserBloc, UserState>(
@@ -25,7 +26,7 @@ class UserCreatePage extends StatelessWidget {
           if (state is UserCreated) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text("Usuário criado com sucesso"),
+                content: Text("Contato adicionado com sucesso"),
               ),
             );
           } else if (state is UserErro) {
@@ -52,20 +53,32 @@ class UserCreatePage extends StatelessWidget {
                 decoration: const InputDecoration(labelText: "Email"),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _phoneController,
+                decoration: const InputDecoration(labelText: "Cell"),
+              ),
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                final name = _nameController.text;
-                final email = _emailController.text;
-                BlocProvider.of<UserBloc>(context).add(
-                  UserCreateReq(name: name, email: email),
-                );
+                _createContact(context);
               },
               child: const Text("Add"),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  void _createContact(BuildContext context) {
+    final name = _nameController.text;
+    final email = _emailController.text;
+    final phone = _phoneController.text;
+    BlocProvider.of<UserBloc>(context).add(
+      UserCreateReq(name: name, email: email, phone: phone),
     );
   }
 }
