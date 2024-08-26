@@ -29,7 +29,13 @@ class UserListPage extends StatelessWidget {
                 final user = state.users[index];
                 return ListTile(
                   title: Text(user.name),
-                  subtitle: Text(user.email),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(user.email),
+                      Text(user.phoneFormatted)
+                    ],
+                  ),
                 );
               },
             );
