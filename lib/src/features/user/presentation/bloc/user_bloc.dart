@@ -37,13 +37,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         
         
          catch (e) {
-          emit(UserErro(message: "Ocorreu um erro inesperado: ${e.toString()}"));
+          emit(UserErro(message: e.toString()));
         }
       },
     );
 
     on<UserListRequested>(
       (event, emit) async {
+        emit(UserInitial());
+
         emit(UserLoading());
         try {
           final users = await listUserUsecase.execute();
@@ -54,7 +56,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         }
         
         catch (e) {
-          emit(UserErro(message: "Ocorreu um erro inesperado: ${e.toString()}"));
+          emit(UserErro(message: e.toString()));
         }
       },
     );

@@ -19,6 +19,12 @@ class CreateUserUsecase {
     if (response.statusCode == 200) {
       final user = jsonDecode(response.body);
       return User.fromJson(user);
+    } else if (response.statusCode == 400) {
+      
+      final Map<String, dynamic> errorResponse = jsonDecode(response.body);
+      final String errorMessage = errorResponse['erro'] ?? "Erro desconhecido";
+      throw Exception(errorMessage);
+
     } else {
       throw Exception("Falha ao criar contato");
     }
