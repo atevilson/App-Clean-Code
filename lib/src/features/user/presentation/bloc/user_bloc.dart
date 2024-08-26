@@ -27,10 +27,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       try {
         final user = await createUserUsecase.execute(
           name: event.name, 
-          email: event.email
+          email: event.email,
+          phone: event.phone
       );
           emit(UserCreated(user: user));
-        } catch (e) {
+        } on SocketException {
+          emit(UserErro(message: "Servidor offline..."));
+        }
+        
+        
+         catch (e) {
           emit(UserErro(message: "Ocorreu um erro inesperado: ${e.toString()}"));
         }
       },
@@ -44,7 +50,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           emit(UserLoaded(users: users));
     
         } on SocketException {
-          emit(UserErro(message: "Serviço offline..."));
+          emit(UserErro(message: "Servidor offline..."));
         }
         
         catch (e) {

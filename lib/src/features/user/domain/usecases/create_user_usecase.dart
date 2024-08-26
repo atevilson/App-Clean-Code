@@ -9,11 +9,11 @@ class CreateUserUsecase {
 
   CreateUserUsecase(this.httpClient);
   
-  Future<User> execute({required String name, required String email}) async {
+  Future<User> execute({required String name, required String email, required String phone}) async {
     final response = await httpClient.post(
       Uri.parse('http://192.168.201.6:5000/api/users'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({'name': name, 'email': email}),
+      body: jsonEncode({'name': name, 'email': email, 'phone': phone}),
     );
 
     if (response.statusCode == 200) {
