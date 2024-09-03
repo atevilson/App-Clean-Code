@@ -13,11 +13,19 @@ class ListUserUsecase {
     final response = await httpClient.get(Uri.parse('http://192.168.201.6:5000/api/users'),
     );
 
-    if (response.statusCode == 200) {
-      final List<dynamic> usersJson = jsonDecode(response.body);
+    if (response.statusCode == 201) {
 
+      final Map<String, dynamic> listEmpty = jsonDecode(response.body);
+      final String msg = listEmpty['message'] ?? "Erro desconhecido";
+      return throw Exception(msg);
+      
+    } else if (response.statusCode == 200) {
+
+      final List<dynamic> usersJson = jsonDecode(response.body);
       return usersJson.map((json) => User.fromJson(json)).toList();
-    } 
-    return throw Exception("Error");
+
+    } else {
+      return throw Exception("Erro ao consultar contatos");
+    }
   }
 }

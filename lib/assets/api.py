@@ -33,6 +33,9 @@ def user_registration():
 @app.route('/api/users', methods=['GET'])
 def list_users():
 
+    if not users:
+        return jsonify({'message': 'Sem contatos...'}), 201
+
     order_data = [
         
         OrderedDict({'id': user['id'], 'name': user['name'], 'email': user['email'], 'phone': user['phone']})

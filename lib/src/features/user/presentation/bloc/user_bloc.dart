@@ -18,26 +18,27 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final CreateUserUsecase createUserUsecase;
   final ListUserUsecase listUserUsecase;
 
-  UserBloc({
-    required this.createUserUsecase,
-    required this.listUserUsecase
-  }) : super(UserInitial()) {
-    on<UserCreateReq>((event, emit) async {
-      emit(UserLoading());
-      try {
-        final user = await createUserUsecase.execute(
-          name: event.name, 
-          email: event.email,
-          phone: event.phone
-      );
+  UserBloc({required this.createUserUsecase, required this.listUserUsecase})
+      : super(UserInitial()) {
+    on<UserCreateReq>(
+      (event, emit) async {
+        emit(UserLoading());
+        try {
+          final user = await createUserUsecase.execute(
+              name: event.name, email: event.email, phone: event.phone);
           emit(UserCreated(user: user));
         } on SocketException {
-          emit(UserErro(message: "Servidor offline..."));
-        }
-        
-        
-         catch (e) {
-          emit(UserErro(message: e.toString()));
+          emit(
+            UserErro(
+                message: "Servidor offline...",
+                errorMessageType: ErrorMessageType.createUserErro),
+          );
+        } catch (e) {
+          emit(
+            UserErro(
+                message: e.toString(),
+                errorMessageType: ErrorMessageType.createUserErro),
+          );
         }
       },
     );
@@ -50,13 +51,18 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         try {
           final users = await listUserUsecase.execute();
           emit(UserLoaded(users: users));
-    
         } on SocketException {
-          emit(UserErro(message: "Servidor offline..."));
-        }
-        
-        catch (e) {
-          emit(UserErro(message: e.toString()));
+          emit(
+            UserErro(
+                message: "Servidor offline...",
+                errorMessageType: ErrorMessageType.listUserErro),
+          );
+        } catch (e) {
+          emit(
+            UserErro(
+                message: e.toString(),
+                errorMessageType: ErrorMessageType.listUserErro),
+          );
         }
       },
     );
