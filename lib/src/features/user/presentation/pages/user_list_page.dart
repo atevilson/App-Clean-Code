@@ -40,9 +40,11 @@ class UserListPage extends StatelessWidget {
               },
             );
           } else if (state is UserErro) {
-            return Center(
+            if (state.errorMessageType == ErrorMessageType.listUserErro) {
+              return Center(
               child: Text(state.message),
             );
+            }
         }
           return const SizedBox.shrink();
         },
