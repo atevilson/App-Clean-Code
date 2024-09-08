@@ -4,10 +4,13 @@ import 'package:clean_code_app/src/features/user/presentation/bloc/user_bloc.dar
 import 'package:clean_code_app/src/features/user/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
-void main() {
+void main() async {
+  
   final http.Client httpClient = http.Client();
+  await dotenv.load(fileName: ".env");
 
   runApp(AppUsers(httpClient: httpClient));
 }
