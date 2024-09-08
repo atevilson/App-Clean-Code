@@ -14,38 +14,41 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double screenFlex = MediaQuery.of(context).size.width;
+
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.fromLTRB(15, 30, 45, 20),
       child: Material(
         child: InkWell(
           onTap: () => onClick(),
           child: Container(
             decoration: const BoxDecoration(boxShadow: [
               BoxShadow(
-                  color: Colors.black12,
-                  spreadRadius: 5,
+                  color: Colors.black,
+                  spreadRadius: 6,
                   blurRadius: 4,
-                  offset: Offset(0, 5),
+                  offset: Offset.zero,
                   blurStyle: BlurStyle.outer)
             ]),
             padding: const EdgeInsets.all(8.0),
-            width: 150,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            width: (screenFlex * 0.33),
+            child: Row(
               children: <Widget>[
-                Text(
-                  name,
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    name,
+                    style: const TextStyle(
+                      color: Colors.black87,
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Icon(
                   icon,
-                  color: Colors.black54,
-                  size: 28.0,
+                  color: Colors.black87,
+                  size: 33.0,
                 ),
               ],
             ),

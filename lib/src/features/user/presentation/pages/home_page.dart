@@ -1,4 +1,5 @@
 
+import 'package:clean_code_app/src/app/widgets/custom_icons.dart';
 import 'package:clean_code_app/src/app/widgets/item_menu.dart';
 import 'package:clean_code_app/src/features/user/presentation/pages/user_create_page.dart';
 import 'package:clean_code_app/src/features/user/presentation/pages/user_list_page.dart';
@@ -9,27 +10,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double imgContatoFlex = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         title:  const Text("Agenda de contatos",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24.0,
-          ),
         ),
       ),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Expanded(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(9.0),
-                  child: Image.asset('images/contato.png'),
+        children: [
+          Expanded(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ColorFiltered(
+                  colorFilter: ColorFilter.mode(Colors.white70.withOpacity(0.2), BlendMode.lighten),
+                  child: Image.asset(
+                    'images/contato.png',
+                    width: (imgContatoFlex * 33.0),
+                  ),
                 ),
-              )
               ),
-            Padding(
+            ),
+          ),
+          Padding(
               padding: const EdgeInsets.all(15.0),
               child: SizedBox(
                 height: 100,
@@ -37,13 +42,13 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: <Widget> [
                     MenuItem(
-                      "Lista de contatos", 
-                    Icons.contact_page, 
+                      "Contatos", 
+                      CustomIcons.contatos,
                       onClick: () => _userListPage(context),
                     ),
                     MenuItem(
-                      "Novo contato",
-                    Icons.contact_mail,
+                      "Criar contato",
+                      CustomIcons.criarContato,
                     onClick: () => _userCreatePage(context),
                   ),
                   ],

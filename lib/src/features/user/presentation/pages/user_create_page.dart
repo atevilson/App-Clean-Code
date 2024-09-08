@@ -18,7 +18,7 @@ class UserCreatePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Adicionar contato",
+          "Criar contato",
         ),
       ),
       body: BlocListener<UserBloc, UserState>(
@@ -65,7 +65,7 @@ class UserCreatePage extends StatelessWidget {
               onPressed: () {
                 _createContact(context);
               },
-              child: const Text("Add"),
+              child: const Text("Adicionar"),
             ),
           ],
         ),

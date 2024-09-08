@@ -4,10 +4,13 @@ import 'package:clean_code_app/src/features/user/presentation/bloc/user_bloc.dar
 import 'package:clean_code_app/src/features/user/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
-void main() {
+void main() async {
+  
   final http.Client httpClient = http.Client();
+  await dotenv.load(fileName: ".env");
 
   runApp(AppUsers(httpClient: httpClient));
 }
@@ -25,20 +28,23 @@ class AppUsers extends StatelessWidget {
         title: "Cadastro de contatos",
         home: const HomePage(),
         theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white70,
+          canvasColor: Colors.white12,
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
-            backgroundColor: Colors.black,
-            foregroundColor: Colors.white
+            backgroundColor: Colors.black45,
+            foregroundColor: Colors.white70
           ),
           elevatedButtonTheme:  const ElevatedButtonThemeData(
             style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(Colors.black),
-              foregroundColor: WidgetStatePropertyAll(Colors.white)
+              backgroundColor: WidgetStatePropertyAll(Colors.black45),
+              foregroundColor: WidgetStatePropertyAll(Colors.white70)
             )
           ),
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.black,
-            foregroundColor: Colors.white,
+            foregroundColor: Colors.white70,
             titleTextStyle: TextStyle(
+              color: Colors.white70,
               fontSize: 24.0,
             )
           ),
