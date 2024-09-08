@@ -25,20 +25,23 @@ class AppUsers extends StatelessWidget {
         title: "Cadastro de contatos",
         home: const HomePage(),
         theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white70,
+          canvasColor: Colors.white12,
           floatingActionButtonTheme: const FloatingActionButtonThemeData(
-            backgroundColor: Colors.black,
-            foregroundColor: Colors.white
+            backgroundColor: Colors.black45,
+            foregroundColor: Colors.white70
           ),
           elevatedButtonTheme:  const ElevatedButtonThemeData(
             style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(Colors.black),
-              foregroundColor: WidgetStatePropertyAll(Colors.white)
+              backgroundColor: WidgetStatePropertyAll(Colors.black45),
+              foregroundColor: WidgetStatePropertyAll(Colors.white70)
             )
           ),
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.black,
-            foregroundColor: Colors.white,
+            foregroundColor: Colors.white70,
             titleTextStyle: TextStyle(
+              color: Colors.white70,
               fontSize: 24.0,
             )
           ),
